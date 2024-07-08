@@ -1,0 +1,317 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik Mono One';
+}
+h1{
+  color: black;
+}
+body {
+  height: 100vh;
+  
+  background-image: url(Images/IMG_9280.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+}
+
+a:hover{
+  color: #BBA53D;
+}
+
+header{
+  position: relative;
+  padding: 0 2rem;
+}
+
+.navbar{
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo a{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar .links{
+  display:flex;
+  gap:2rem;
+}
+
+.navbar .toggle_btn{
+color: white;
+font-size: 1.5rem;
+cursor: pointer;
+display: none;
+}
+
+.action_btn{
+  background-color: #BBA53D;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: regular;
+  cursor: pointer;
+  transition: scale 1s;
+}
+
+.action_btn:hover{
+  scale: 1.10;
+  color: white;
+}
+
+.action_btn:active{
+  scale:0.95;
+}
+
+.dropdown_menu{
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: 60px;
+  height: 0;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.075);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
+}
+
+.dropdown_menu.open{
+  height:200px;
+}
+
+.dropdown_menu li{
+  padding: 0.7rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.dropdown_menu .action_btn{
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+img {
+  display:block;
+  max-width: 100%;
+  height: auto;
+
+}
+
+
+/* CARD */
+
+.container {
+  display: grid;
+  place-items: center;
+  margin-inline:1.5rem;
+  padding-block: 5rem;
+}
+
+.card__container{
+  display:grid;
+  row-gap: 3.5rem;
+}
+
+.card__article{
+  position: relative;
+  overflow: hidden;
+}
+
+.card__img{
+  width: 328px;
+  border-radius: 1.5rem;
+}
+
+.card__data{
+  width: 220px;
+  background-color:white ;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 100%, 0.32);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -12rem;
+  left: 0;
+  right:0;
+  margin-inline:auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.card__description{
+  display: block;
+  font-size: small;
+  font-family:'Kanit', sans-serif ;
+  font-weight: 300;
+  margin-bottom: .25rem;
+}
+
+.card__title{
+  font-size: large;
+  font-family: 'Kanit',sans-serif;
+  font-weight: 6000;
+  font-style: italic;
+  margin-bottom: .75rem;
+}
+
+.card__button{
+  color:#BBA53D;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: 'kanit',sans-serif;
+  font-weight: 300;
+}
+
+.card__button:hover{
+  text-decoration: underline;
+}
+
+/* Naming animation in hover */
+
+.card__article:hover .card__data{
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card__article:hover{
+  animation: remove-overflow 1s forwards;
+}
+
+.card__article:not(:hover){
+  animation: show-overflow 2s forwards;
+}
+
+.card__article:not(:hover) .card__data{
+  animation: remove-data 1s forwards;
+}
+/* card animation */
+@keyframes show-data{
+  50%{
+    transform: translateY(-10rem);
+  }
+  100%{
+    transform: translateY(-7rem)
+  }
+}
+
+@keyframes remove-overflow{
+  to{
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data{
+  0%{
+    transform: translateY(-7rem);
+  }
+  50%{
+    transform: translateY(-10rem);
+  }
+  100%{
+    transform: translateY(-.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0%{
+    overflow: initial;
+    pointer-events: none;
+  }
+  50%{
+    overflow:hidden;
+  }
+}
+
+
+/* breakpoint */
+
+/* small  */
+
+@media screen and (max-width:340px){
+  .container{
+    margin-inline:1rem;
+  }
+
+  .card__data{
+    width: 250px;
+    padding: 1rem;
+  }
+}
+
+/* meidum */
+
+@media screen and (min-width:768px){
+  .card__container{
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem; 
+  }
+  
+}
+
+
+@media screen and (min-width: 1120px){
+  .container{
+    height: 100hv;
+  }
+  .card__container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+
+
+@media(max-width: 992px){
+  .navbar .links,
+  .navbar .action_btn{
+    display: none;
+  }
+  .navbar .toggle_btn{
+    display: block;
+  }
+
+  .dropdown_menu{
+    display: block;
+  }
+} 
+
+
+@media(max-width: 576px){
+.dropdown_menu{
+  left: 2rem;
+  width: unset;
+  z-index: 1000;
+}
+}
+
+
+
+
+
+
