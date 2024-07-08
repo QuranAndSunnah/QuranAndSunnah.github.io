@@ -10,7 +10,7 @@ h1{
 body {
   height: 100vh;
   
-  background-image: url(Images/IMG_9280.jpg);
+  background-image: url(/Images/IMG_9280.jpg);
   background-size: cover;
   background-position: center;
 }
